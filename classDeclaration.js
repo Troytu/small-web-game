@@ -13,6 +13,7 @@ function Game() {
             console.debug("square start.");
 
             square.startMove();
+            square.timedCount();
         });
 
         $(square).bind('squareStop', function () {
@@ -117,6 +118,24 @@ function Square(dom, options) {
         reset();
         refresh();
     };
+
+    
+    var c=0;
+    var t; 
+
+    this.timedCount=function(){
+        var _this=this;
+        t=setTimeout(_this.accumlate,100);
+
+    };
+    this.accumlate=function(){
+        document.getElementById("time").innerHTML=c;
+        c=c+1;
+        console.log(c);
+
+    }
+
+   
 
     init();
 }
